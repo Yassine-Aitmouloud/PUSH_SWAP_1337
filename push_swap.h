@@ -7,12 +7,18 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int				content;
 	struct s_list	*next;
 }					t_list;
 
+int	if_the_same(int c, int d);
+int	if_dup(t_list *lst);
+void free_stack(t_list *stack);
+int	check_if_number(char *string);
+int	ft_isprint(int c);
+size_t	ft_strlen(const char *str);
 int	ft_atoi(const char *str);
-t_list				*ft_lstnew(void *content);
+t_list				*ft_lstnew(int content);
 t_list				*ft_lstlast(t_list *lst);
 int					ft_lstsize(t_list *lst);
 void				ft_lstadd_back(t_list **lst, t_list *new_node);

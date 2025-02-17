@@ -1,5 +1,14 @@
 #include "push_swap.h"
 
+size_t	ft_strlen(const char *str)
+{
+	size_t i;
+	i = 0;
+	while(str[i])
+		i++;
+	return(i);
+}
+
 int	ft_lstsize(t_list *lst)
 {
 	int	counter;
@@ -13,7 +22,7 @@ int	ft_lstsize(t_list *lst)
 	return (counter);
 }
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*new;
 
@@ -44,7 +53,19 @@ void	ft_lstadd_front(t_list **lst, t_list *new_node)
 		*lst = new_node;
 	}
 }
-
+int	if_dup(t_list *lst)
+{
+	while (lst->next != NULL)
+	{
+		if ((if_the_same(lst->content, lst->next->content)) == 1)
+		{
+			return (1);
+		}
+		else
+			lst = lst->next;
+	}
+	return (0);
+}
 void	ft_lstadd_back(t_list **lst, t_list *new_node)
 {
 	t_list	*tmp;
@@ -209,4 +230,41 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		string[i++] = s2[lenfors2++];
 	string[lenmalloc] = '\0';
 	return (string);
+}
+
+int	ft_isprint(int c)
+{
+	return ( c >= 32 && c <= 126);
+}
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int	check_if_number(char *string)
+{
+	int i;
+	i = 0;
+	while(string[i])
+	{
+		if (!((ft_isdigit(string[i])) || (string[i] == '-' && ft_isdigit(string[i + 1])) || (string[i] == '+' && ft_isdigit(string[i + 1]))))
+			return(1);
+		i++;
+	}
+	return(0);
+}
+void free_stack(t_list *stack)
+{
+    t_list *tmp;
+    
+    while (stack)
+    {
+        tmp = stack->next;
+        free(stack);
+        stack = tmp;
+    }
+}
+int	if_the_same(int c, int d)
+{
+	return(c == d);
 }
