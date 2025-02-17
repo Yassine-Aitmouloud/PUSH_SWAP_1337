@@ -84,10 +84,10 @@ void	ft_lstadd_back(t_list **lst, t_list *new_node)
 	}
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str,int *error)
 {
 	int	sign;
-	int	res;
+	long int	res;
 	int	i;
 
 	if (!*str)
@@ -106,6 +106,8 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		res = res * 10 + (str[i] - '0');
+		if ((sign == 1 && res > 2147483647) || (sign == -1 && -res < -2147483648))
+            return (*error = 1, 0);
 		i++;
 	}
 	return (res * sign);

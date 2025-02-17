@@ -9,8 +9,12 @@ int main(int ac, char **av)
         char **string_form;
         int j;
         int int_form;
+        int error;
         t_list *node;
-        t_list *stack_a;        
+        t_list *stack_a;
+        t_list *stack_b;
+        stack_b = NULL;
+        
         stack_a = NULL;
         i = 1;
         while (i < ac)
@@ -36,7 +40,14 @@ int main(int ac, char **av)
                     free_stack(stack_a);
                     return (1);
                 }
-                int_form = ft_atoi(string_form[j]);
+                int_form = ft_atoi(string_form[j], &error);
+                if (error)
+                {
+                    write(1, "Error\n", 6);
+                    ft_free(string_form);
+                    free_stack(stack_a);
+                    return (1);
+                }
                 node = ft_lstnew(int_form);
                 if (!node)
                 {
@@ -53,9 +64,11 @@ int main(int ac, char **av)
         }
         if(if_dup(stack_a))
         {
+            free_stack(stack_a);   
             write(1,"Error\n",6);
             return(1);
         }
+        ra(&stack_a);
         t_list *tmp = stack_a;
     while(tmp)
     {

@@ -11,13 +11,21 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+void rr(t_list **stack_a, t_list **stack_b);
+void ra(t_list **stack_a);
+void rb(t_list **stack_b);
+void    pa(t_list **stack_a, t_list **stack_b);
+void    pb(t_list **stack_a, t_list **stack_b);
+void    ss(t_list **stack_a, t_list **stack_b);
+void	sb(t_list **lst);
+void	sa(t_list **lst);
 int	if_the_same(int c, int d);
 int	if_dup(t_list *lst);
 void free_stack(t_list *stack);
 int	check_if_number(char *string);
 int	ft_isprint(int c);
 size_t	ft_strlen(const char *str);
-int	ft_atoi(const char *str);
+int	ft_atoi(const char *str, int *error);
 t_list				*ft_lstnew(int content);
 t_list				*ft_lstlast(t_list *lst);
 int					ft_lstsize(t_list *lst);
