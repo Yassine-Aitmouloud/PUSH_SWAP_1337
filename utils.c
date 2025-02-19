@@ -55,14 +55,17 @@ void	ft_lstadd_front(t_list **lst, t_list *new_node)
 }
 int	if_dup(t_list *lst)
 {
-	while (lst->next != NULL)
+	t_list *tmp;
+	while (lst != NULL)
 	{
-		if ((if_the_same(lst->content, lst->next->content)) == 1)
+		tmp = lst->next;
+		while (tmp)
 		{
-			return (1);
+			if (if_the_same(lst->content,tmp->content) == 1)
+				return (1);
+			tmp = tmp->next;
 		}
-		else
-			lst = lst->next;
+		lst = lst->next;
 	}
 	return (0);
 }

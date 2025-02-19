@@ -7,10 +7,24 @@
 
 typedef struct s_list
 {
+	int				position;
+	int 			index;
 	int				content;
+	int				above_line;
 	struct s_list	*next;
 }					t_list;
-
+void sort_of_4(t_list **stack_a, t_list **stack_b);
+void    sort_of_2(t_list **stack_a);
+int    is_sorted(t_list **stack_a);
+void	ft_position(t_list **stack_a,int size);
+void ft_index_stack(t_list **stack_a, int *numbers, int size);
+int    *ft_sort_numbers(t_list **stack_a);
+void	ft_swap(int *a,int *b);
+void    sorting(int *numbers,int size);
+int write_error(char **string_form, t_list *stack_a);
+void    rrr(t_list **stack_a, t_list **stack_b);
+void	rrb(t_list **stack_b);
+void	rra(t_list **stack_a);
 void rr(t_list **stack_a, t_list **stack_b);
 void ra(t_list **stack_a);
 void rb(t_list **stack_b);

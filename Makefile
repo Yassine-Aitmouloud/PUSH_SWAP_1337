@@ -1,7 +1,7 @@
 NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
-CFILES = utils.c main.c utils2.c
+CFILES = utils.c push_swap.c utils2.c utils3.c
 
 
 OBJM = $(CFILES:.c=.o)
